@@ -1,8 +1,7 @@
 
-// FIND THE AUDIO PLAYER ELEMENTS
+// AUDIO PLAYER ELEMENTS
 
 const audio = document.getElementById("soundtrack");
-
 const playButton = document.getElementById("playButton");
 const navSound = document.getElementById("navSound");
 
@@ -14,20 +13,15 @@ const currentTimeLabel = document.getElementById("currentTime");
 const playerHint = document.getElementById("playerHint");
 const volume = document.getElementById("volume");
 
-
-// SOUND WILL PLAY FOR 75 SECONDS
-
 const MAX_PLAY_SECONDS = 75;
 
 
-// FORMAT THE AUDIO TIMER
+// FORMAT AUDIO TIMER
 
 function formatTime(seconds) {
-
   if (!Number.isFinite(seconds)) return "0:00";
 
   const mins = Math.floor(seconds / 60);
-
   const secs = Math.floor(seconds % 60)
     .toString()
     .padStart(2, "0");
@@ -36,24 +30,21 @@ function formatTime(seconds) {
 }
 
 
-// UPDATE THE PLAY BUTTON AND SOUND WAVE
+// UPDATE PLAYING APPEARANCE
 
 function setPlaying(isPlaying) {
-
   playButton.textContent = isPlaying ? "Ⅱ" : "▶";
 
   navSound.querySelector("span").textContent =
     isPlaying ? "Sound on" : "Sound off";
 
   wave.classList.toggle("playing", isPlaying);
-
 }
 
 
-// PLAY AND PAUSE AUDIO
+// PLAY AND PAUSE
 
 async function toggleAudio() {
-
   if (audio.paused) {
 
     if (audio.currentTime >= MAX_PLAY_SECONDS) {
@@ -61,7 +52,6 @@ async function toggleAudio() {
     }
 
     try {
-
       await audio.play();
 
       setPlaying(true);
@@ -70,49 +60,50 @@ async function toggleAudio() {
         "Take a moment. You're listening to Birzeit, Palestine.";
 
     } catch (error) {
+      console.error("Audio playback error:", error);
 
       playerHint.textContent =
-        "Please add the recording to the audio folder first.";
+        "The recording could not load. Please check your audio file.";
 
     }
 
   } else {
-
     audio.pause();
-
     setPlaying(false);
-
   }
-
 }
 
 
-// BUTTON INTERACTIONS
+// BUTTONS
 
 playButton.addEventListener("click", toggleAudio);
-
 navSound.addEventListener("click", toggleAudio);
 
 
-// VOLUME CONTROL
+// VOLUME
 
 audio.volume = Number(volume.value);
 
 volume.addEventListener("input", () => {
-
   audio.volume = Number(volume.value);
-
 });
 
 
-// UPDATE THE AUDIO PROGRESS BAR
+// AUDIO LOADING CHECK
+
+audio.addEventListener("error", () => {
+  console.error("Audio file could not be found or loaded.");
+
+  playerHint.textContent =
+    "Audio unavailable. Check the audio folder and MP3 filename.";
+});
+
+
+// AUDIO PROGRESS
 
 audio.addEventListener("timeupdate", () => {
 
-  const current = Math.min(
-    audio.currentTime,
-    MAX_PLAY_SECONDS
-  );
+  const current = Math.min(audio.currentTime, MAX_PLAY_SECONDS);
 
   progress.style.width =
     `${(current / MAX_PLAY_SECONDS) * 100}%`;
@@ -120,42 +111,41 @@ audio.addEventListener("timeupdate", () => {
   currentTimeLabel.textContent = formatTime(current);
 
 
-  // STOP AUDIO AFTER 75 SECONDS
+  // STOP AFTER 75 SECONDS
 
   if (audio.currentTime >= MAX_PLAY_SECONDS) {
-
     audio.pause();
-
     audio.currentTime = MAX_PLAY_SECONDS;
 
     setPlaying(false);
 
     playerHint.textContent =
       "A little moment from Palestine. Press play to listen again.";
-
   }
 
 });
 
 
-// RESET PLAY BUTTON WHEN AUDIO ENDS
+// RESET WHEN AUDIO ENDS
 
 audio.addEventListener("ended", () => {
-
   setPlaying(false);
-
 });
 
 audio.addEventListener("pause", () => {
-
   setPlaying(false);
+});
 
+audio.addEventListener("play", () => {
+  setPlaying(true);
 });
 
 
-// CLICK THE PROGRESS BAR TO SKIP THROUGH AUDIO
+// CLICK TIMELINE TO SKIP
 
 timeline.addEventListener("click", (event) => {
+
+  if (!Number.isFinite(audio.duration)) return;
 
   const rect = timeline.getBoundingClientRect();
 
@@ -164,14 +154,11 @@ timeline.addEventListener("click", (event) => {
     Math.min(1, (event.clientX - rect.left) / rect.width)
   );
 
-  if (audio.duration) {
-
-    audio.currentTime = Math.min(
-      ratio * MAX_PLAY_SECONDS,
-      MAX_PLAY_SECONDS
-    );
-
-  }
+  audio.currentTime = Math.min(
+    ratio * MAX_PLAY_SECONDS,
+    MAX_PLAY_SECONDS,
+    audio.duration
+  );
 
 });
 
@@ -181,9 +168,7 @@ timeline.addEventListener("click", (event) => {
 const memories = document.querySelectorAll(".memory");
 
 const captionText = document.getElementById("captionText");
-
 const captionPop = document.getElementById("captionPop");
-
 
 memories.forEach((memory) => {
 
@@ -203,7 +188,7 @@ memories.forEach((memory) => {
 });
 
 
-// CLOSE THE PHOTO CAPTION
+// CLOSE PHOTO CAPTION
 
 document.getElementById("closeCaption")
   .addEventListener("click", () => {
@@ -216,7 +201,7 @@ document.getElementById("closeCaption")
   });
 
 
-// SCROLL ANIMATION
+// SCROLL ANIMATIONS
 
 const observer = new IntersectionObserver((entries) => {
 
@@ -239,8 +224,6 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 
-// REVEAL SECTIONS AS THEY ENTER THE SCREEN
-
 document.querySelectorAll(
   ".intro-grid, .player-card, .gallery-heading, .closing-grid"
 ).forEach((element) => {
@@ -257,7 +240,7 @@ document.querySelectorAll(
 });
 
 
-// GENTLE HERO IMAGE MOVEMENT WHEN SCROLLING
+// HERO IMAGE MOVEMENT
 
 const heroImage = document.querySelector(".hero-image");
 
