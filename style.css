@@ -1,0 +1,734 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --paper: #f4efe5;
+  --ink: #252b20;
+  --olive: #596448;
+  --clay: #b7795d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* NAVIGATION */
+
+.nav {
+  height: 76px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  color: white;
+  border-bottom: 1px solid #ffffff40;
+}
+
+.brand {
+  font-family: "Reem Kufi Ink";
+  font-size: 23px;
+}
+
+.brand span {
+  font: 9px "DM Sans";
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover {
+  opacity: .6;
+}
+
+.sound-toggle {
+  background: transparent;
+  color: white;
+  border: 1px solid #ffffff80;
+  border-radius: 30px;
+  padding: 10px 15px;
+}
+
+/* HERO */
+
+.hero {
+  height: 850px;
+  min-height: 680px;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #48513e;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/%D8%B4%D8%AC%D8%B1%D8%A9_%D8%B2%D9%8A%D8%AA%D9%88%D9%86_%D8%B9%D9%85%D8%B1%D9%87%D8%A7_%D8%A7%D9%83%D8%AB%D8%B1_%D9%85%D9%86_2500_%D8%B3%D9%86%D8%A9.jpg/1280px-%D8%B4%D8%AC%D8%B1%D8%A9_%D8%B2%D9%8A%D8%AA%D9%88%D9%86_%D8%B9%D9%85%D8%B1%D9%87%D8%A7_%D8%A7%D9%83%D8%AB%D8%B1_%D9%85%D9%86_2500_%D8%B3%D9%86%D8%A9.jpg");
+  background-size: cover;
+  background-position: center;
+  animation: zoom 18s ease-out forwards;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #131b13c2,
+    #131b1345,
+    #131b1310
+  );
+}
+
+.hero-content {
+  position: relative;
+  margin-left: 13%;
+  max-width: 590px;
+  animation: rise 1.2s ease;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #e6ddc9;
+}
+
+.arabic-title {
+  font: 50px "Reem Kufi Ink";
+  margin: 30px 0 10px;
+  color: #e7ddc8;
+}
+
+h1, h2 {
+  font: 500 clamp(48px, 6vw, 88px)/1.1 "Playfair Display";
+  letter-spacing: -2px;
+}
+
+h1 em {
+  color: #d6c6a1;
+}
+
+.hero-copy {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 340px;
+  margin-top: 24px;
+  color: #ffffffc9;
+}
+
+.enter-link {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 42px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid white;
+}
+
+.hero-bottom {
+  position: absolute;
+  bottom: 28px;
+  left: 7%;
+  right: 7%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* GENERAL SECTIONS */
+
+.section-pad {
+  padding: 125px 13%;
+}
+
+.section-kicker {
+  color: var(--olive);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+}
+
+.section-kicker span {
+  color: var(--clay);
+  font: 18px "Playfair Display";
+  margin-right: 12px;
+}
+
+.overline {
+  color: var(--clay);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+}
+
+h2 {
+  font-size: clamp(43px, 5vw, 66px);
+  color: var(--ink);
+}
+
+h2 em {
+  color: var(--olive);
+}
+
+.intro-grid,
+.closing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9%;
+  align-items: end;
+}
+
+.intro-text p,
+.closing-copy p {
+  font-size: 14px;
+  line-height: 2;
+  color: #66695c;
+  margin-bottom: 17px;
+}
+
+/* AUDIO PLAYER */
+
+.player-card {
+  margin-top: 75px;
+  background: #e9e3d6;
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  min-height: 300px;
+  box-shadow: 0 20px 55px #32322312;
+}
+
+.player-art {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  background: linear-gradient(
+    #c6bda0,
+    #9c9d78 70%,
+    #6c7858
+  );
+}
+
+.sun {
+  position: absolute;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  background: #e9d7a9;
+  right: 22%;
+  top: 17%;
+  box-shadow: 0 0 70px #f1d8a280;
+}
+
+.hill {
+  position: absolute;
+  bottom: -10%;
+  width: 120%;
+  height: 65%;
+  border-radius: 50% 50% 0 0;
+}
+
+.hill-back {
+  background: #858c69;
+  left: -30%;
+}
+
+.hill-front {
+  background: #596849;
+  right: -30%;
+  bottom: -23%;
+}
+
+.art-label {
+  position: absolute;
+  bottom: 22px;
+  left: 25px;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.player-info {
+  padding: 44px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.now-playing {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--olive);
+}
+
+.pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #8b9b68;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.player-info h3 {
+  font: 29px "Playfair Display";
+  margin-top: 12px;
+}
+
+.track-sub {
+  font-size: 11px;
+  color: #7d7c6e;
+  margin-top: 6px;
+}
+
+/* ANIMATED SOUND WAVE */
+
+.wave {
+  height: 43px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 25px 0;
+}
+
+.wave i {
+  display: block;
+  width: 3px;
+  height: 15px;
+  border-radius: 4px;
+  background: #8b9275;
+}
+
+.wave.playing i {
+  animation: wave .75s ease-in-out infinite alternate;
+}
+
+.wave i:nth-child(3n) { height: 20px; }
+.wave i:nth-child(4n) { height: 28px; }
+.wave i:nth-child(5n) { height: 34px; }
+
+/* AUDIO CONTROLS */
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.play-button {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--olive);
+  color: white;
+  font-size: 13px;
+}
+
+.play-button:hover {
+  background: #39452f;
+  transform: scale(1.07);
+}
+
+.timeline-wrap {
+  flex: 1;
+}
+
+.timeline {
+  height: 3px;
+  background: #c9c4b6;
+  cursor: pointer;
+}
+
+.progress {
+  height: 100%;
+  width: 0;
+  background: var(--olive);
+}
+
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #8b897c;
+  margin-top: 7px;
+}
+
+.volume-control {
+  color: var(--olive);
+  font-size: 15px;
+}
+
+.volume-control input {
+  width: 55px;
+  accent-color: var(--olive);
+}
+
+.player-hint {
+  font-size: 10px;
+  color: #8b897c;
+  margin-top: 17px;
+}
+
+.audio-credit {
+  font-size: 10px;
+  color: #858575;
+  margin-top: 15px;
+}
+
+.audio-credit a {
+  color: var(--olive);
+  text-decoration: underline;
+}
+
+/* PHOTO GALLERY */
+
+.gallery-section {
+  background: #e9e4d8;
+  padding-bottom: 110px;
+}
+
+.gallery-heading {
+  padding-bottom: 65px;
+}
+
+.gallery-heading h2 {
+  margin-bottom: 18px;
+}
+
+.gallery-heading p {
+  font-size: 12px;
+  color: #77786b;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr 1fr;
+  gap: 13px;
+  padding: 0 7%;
+}
+
+.memory {
+  border: 0;
+  padding: 0;
+  position: relative;
+  height: 440px;
+  overflow: hidden;
+  text-align: left;
+  background: #c7c1ac;
+  cursor: pointer;
+  color: white;
+}
+
+.memory-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform .8s ease;
+}
+
+.memory:hover .memory-image {
+  transform: scale(1.07);
+}
+
+.memory-market .memory-image {
+  background-image:
+    linear-gradient(0deg, #14191070, transparent 60%),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/2010-08_Ramallah_57.jpg/960px-2010-08_Ramallah_57.jpg");
+}
+
+.memory-olive .memory-image {
+  background-image:
+    linear-gradient(0deg, #14191070, transparent 60%),
+    url("https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/%D8%B4%D8%AC%D8%B1%D8%A9_%D8%B2%D9%8A%D8%AA%D9%88%D9%86_%D8%B9%D9%85%D8%B1%D9%87%D8%A7_%D8%A7%D9%83%D8%AB%D8%B1_%D9%85%D9%86_2500_%D8%B3%D9%86%D8%A9.jpg/960px-%D8%B4%D8%AC%D8%B1%D8%A9_%D8%B2%D9%8A%D8%AA%D9%88%D9%86_%D8%B9%D9%85%D8%B1%D9%87%D8%A7_%D8%A7%D9%83%D8%AB%D8%B1_%D9%85%D9%86_2500_%D8%B3%D9%86%D8%A9.jpg");
+}
+
+.memory-stone .memory-image {
+  background-image:
+    linear-gradient(0deg, #14191070, transparent 60%),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/%D8%A8%D9%8A%D8%B1_%D8%B2%D9%8A%D8%AA.jpg/960px-%D8%A8%D9%8A%D8%B1_%D8%B2%D9%8A%D8%AA.jpg");
+}
+
+.memory-number {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  font: italic 18px "Playfair Display";
+}
+
+.memory-label {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* INTERACTIVE CAPTIONS */
+
+.caption-pop {
+  margin: 24px 7% 0;
+  padding: 18px 25px;
+  border-top: 1px solid #252b2030;
+  border-bottom: 1px solid #252b2030;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 70px;
+}
+
+.caption-mark {
+  font: 40px "Playfair Display";
+  color: var(--clay);
+}
+
+.caption-pop p {
+  font: italic 15px "Playfair Display";
+  color: #5f6255;
+  flex: 1;
+}
+
+.caption-pop button {
+  border: 0;
+  background: transparent;
+  font-size: 23px;
+  color: #777;
+}
+
+/* CLOSING QUOTE */
+
+.quote-section {
+  height: 530px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: #4c5942;
+}
+
+.quote-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(#1b221799, #1b221799),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/%D8%A8%D9%8A%D8%B1_%D8%B2%D9%8A%D8%AA.jpg/1280px-%D8%A8%D9%8A%D8%B1_%D8%B2%D9%8A%D8%AA.jpg")
+    center/cover;
+}
+
+.quote-content {
+  position: relative;
+  padding: 30px;
+}
+
+.quote-mark {
+  font: 70px "Playfair Display";
+  color: #d6c6a1;
+}
+
+.quote-content p {
+  font: italic clamp(28px, 4vw, 47px)/1.35 "Playfair Display";
+  margin: 25px 0;
+}
+
+.quote-line {
+  display: block;
+  width: 35px;
+  height: 1px;
+  background: #c9b98e;
+  margin: 25px auto;
+}
+
+.quote-arabic {
+  display: block;
+  font: 25px "Reem Kufi Ink";
+  color: #e7ddc8;
+  margin-bottom: 12px;
+}
+
+.quote-content small {
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+/* FOOTER */
+
+.closing {
+  padding-bottom: 35px;
+}
+
+.closing-copy {
+  max-width: 410px;
+}
+
+.arabic-signoff {
+  font: 22px "Reem Kufi Ink";
+  color: var(--olive);
+  margin-top: 25px;
+}
+
+.footer {
+  border-top: 1px solid #252b2030;
+  margin-top: 110px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #888879;
+}
+
+/* ANIMATIONS */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoom {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes wave {
+  from {
+    transform: scaleY(.45);
+  }
+  to {
+    transform: scaleY(1.2);
+  }
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 800px) {
+
+  .nav {
+    padding: 0 5%;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 9px;
+  }
+
+  .section-pad {
+    padding: 85px 8%;
+  }
+
+  .intro-grid,
+  .closing-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .player-card {
+    grid-template-columns: 1fr;
+  }
+
+  .player-art {
+    min-height: 220px;
+  }
+
+  .player-info {
+    padding: 32px 27px;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 5%;
+  }
+
+  .memory {
+    height: 330px;
+  }
+
+  .memory-stone {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .nav-links {
+    gap: 9px;
+  }
+
+  .brand span {
+    display: none;
+  }
+
+  .hero {
+    min-height: 620px;
+  }
+
+  .hero-content {
+    margin-left: 8%;
+  }
+
+  .section-pad {
+    padding: 75px 7%;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory {
+    height: 380px;
+  }
+
+  .memory-stone {
+    display: block;
+  }
+
+  .quote-section {
+    height: 450px;
+  }
+
+  .footer {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+}

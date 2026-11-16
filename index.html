@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palestine — A Place That Stays</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="#home">فلسطين <span>PALESTINE</span></a>
+
+    <div class="nav-links">
+      <a href="#sound">Listen</a>
+      <a href="#memories">Explore</a>
+      <a href="#ending">A note</a>
+    </div>
+
+    <button class="sound-toggle" id="navSound">
+      ♫ <span>Sound off</span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- OPENING SECTION -->
+
+    <section class="hero" id="home">
+      <div class="hero-image"></div>
+      <div class="hero-shade"></div>
+
+      <div class="hero-content">
+        <p class="eyebrow">A SOUND & VISUAL JOURNEY</p>
+
+        <p class="arabic-title">فلسطين</p>
+
+        <h1>A place that<br>
+          <em>stays with you.</em>
+        </h1>
+
+        <p class="hero-copy">
+          Some places live in your memories.
+          Others become a part of you.
+        </p>
+
+        <a class="enter-link" href="#sound">
+          STEP INSIDE ↓
+        </a>
+      </div>
+
+      <div class="hero-bottom">
+        <span>01 / 03</span>
+        <span>PALESTINE · THE LAND OF OLIVES</span>
+      </div>
+    </section>
+
+
+    <!-- SOUND SECTION -->
+
+    <section class="intro section-pad" id="sound">
+
+      <div class="section-kicker">
+        <span>01</span> LISTEN TO THE LAND
+      </div>
+
+      <div class="intro-grid">
+
+        <div>
+          <p class="overline">CLOSE YOUR EYES FOR A MOMENT</p>
+
+          <h2>Every place has<br>
+            a <em>heartbeat.</em>
+          </h2>
+        </div>
+
+        <div class="intro-text">
+          <p>
+            In Palestine, the everyday has its own music:
+            voices drifting through a market, the evening
+            call to prayer, the wind moving through olive
+            trees, and the familiar rhythm of life outside
+            an open window.
+          </p>
+
+          <p>
+            This soundscape is a small window into those
+            moments — a reminder that home can be heard,
+            as much as it can be seen.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- AUDIO PLAYER -->
+
+      <div class="player-card">
+
+        <div class="player-art">
+          <div class="sun"></div>
+          <div class="hill hill-back"></div>
+          <div class="hill hill-front"></div>
+          <span class="art-label">BIRZEIT · PALESTINE</span>
+        </div>
+
+        <div class="player-info">
+
+          <div class="now-playing">
+            <span class="pulse"></span>
+            FIELD RECORDING
+          </div>
+
+          <h3>Evening in Palestine</h3>
+
+          <p class="track-sub">
+            The Maghrib adhan · Birzeit, near Ramallah
+          </p>
+
+          <div class="wave" id="wave">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+
+          <div class="player-controls">
+
+            <button class="play-button" id="playButton">
+              ▶
+            </button>
+
+            <div class="timeline-wrap">
+              <div class="timeline" id="timeline">
+                <div class="progress" id="progress"></div>
+              </div>
+
+              <div class="time-row">
+                <span id="currentTime">0:00</span>
+                <span>1:15</span>
+              </div>
+            </div>
+
+            <label class="volume-control">
+              ♫
+              <input id="volume" type="range"
+                min="0" max="1" step="0.05" value="0.8">
+            </label>
+
+          </div>
+
+          <p class="player-hint" id="playerHint">
+            Press play and let the sounds take you there.
+          </p>
+
+          <audio id="soundtrack" preload="metadata">
+            <source src="audio/palestine-soundscape.mp3" type="audio/mpeg">
+              type="audio/wav">
+          </audio>
+
+        </div>
+      </div>
+
+      <p class="audio-credit">
+        Recording: Maghrib Athan Through an Open Window in Palestine.
+        <a href="https://freesound.org/people/sounds_from_palestine/sounds/813740/"
+          target="_blank">Audio source ↗</a>
+      </p>
+
+    </section>
+
+
+    <!-- INTERACTIVE PHOTO SECTION -->
+
+    <section class="gallery-section" id="memories">
+
+      <div class="gallery-heading section-pad">
+
+        <div class="section-kicker">
+          <span>02</span> LITTLE MOMENTS, BIG MEMORIES
+        </div>
+
+        <h2>More than a place.<br>
+          <em>A feeling.</em>
+        </h2>
+
+        <p>
+          Click a photograph to reveal a little memory.
+        </p>
+
+      </div>
+
+      <div class="memory-grid">
+
+        <button class="memory memory-market"
+          data-caption="The sound of a market is never just noise. It is people, stories, and everyday life happening all at once.">
+
+          <span class="memory-image"></span>
+          <span class="memory-number">01</span>
+          <span class="memory-label">THE STREETS ↗</span>
+
+        </button>
+
+
+        <button class="memory memory-olive"
+          data-caption="Olive trees hold generations of stories. Their roots remind us where we come from.">
+
+          <span class="memory-image"></span>
+          <span class="memory-number">02</span>
+          <span class="memory-label">THE OLIVE TREES ↗</span>
+
+        </button>
+
+
+        <button class="memory memory-stone"
+          data-caption="Stone streets, warm light, and the feeling of walking somewhere familiar.">
+
+          <span class="memory-image"></span>
+          <span class="memory-number">03</span>
+          <span class="memory-label">THE OLD STREETS ↗</span>
+
+        </button>
+
+      </div>
+
+
+      <div class="caption-pop" id="captionPop">
+
+        <span class="caption-mark">“</span>
+
+        <p id="captionText">
+          Choose a photograph to uncover its memory.
+        </p>
+
+        <button id="closeCaption">×</button>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUOTE SECTION -->
+
+    <section class="quote-section">
+
+      <div class="quote-bg"></div>
+
+      <div class="quote-content">
+
+        <span class="quote-mark">“</span>
+
+        <p>
+          Home is not always where you are.
+          <br>
+          Sometimes, it is what you carry.
+        </p>
+
+        <span class="quote-line"></span>
+
+        <span class="quote-arabic">
+          على هذه الأرض ما يستحق الحياة
+        </span>
+
+        <small>
+          ON THIS LAND, THERE IS THAT WHICH DESERVES LIFE.
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <!-- CLOSING SECTION -->
+
+    <section class="closing section-pad" id="ending">
+
+      <div class="section-kicker">
+        <span>03</span> UNTIL NEXT TIME
+      </div>
+
+      <div class="closing-grid">
+
+        <div>
+          <p class="overline">A LITTLE PIECE OF HOME</p>
+
+          <h2>Palestine,<br>
+            <em>always with me.</em>
+          </h2>
+        </div>
+
+        <div class="closing-copy">
+          <p>
+            Through its sounds, its landscapes, and its
+            everyday moments, Palestine is more than
+            a destination. It is memory, identity,
+            and belonging.
+          </p>
+
+          <p class="arabic-signoff">
+            الحمد لله دائماً وأبداً
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer">
+        <span>MADE WITH LOVE</span>
+        <span>فلسطين · PALESTINE</span>
+        <span>© 2026</span>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
